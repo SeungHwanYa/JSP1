@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>JSP</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <filter>
+  	<filter-name>AjaxFilter</filter-name>
+  	<filter-class>com.jsp.filter.AjaxFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>AjaxFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>	
+  
+  <error-page>
+  <!-- 100번대 -> 현재 작업처리중 -->
+  <!-- 200번대 -> 올바른 처리 -->
+  <!-- 300번대 -> 추가 작업이 필요하다 -->
+  <!-- 400번대 -> 처리가 불가능하다 -->
+  <!-- 500번대 -> 처리에 실패했다 -->
+  <!-- 400 -> 잘못된 요청, 401,403 -> 권한 부족, 404 -> 못찾음, 408 -> 시간만료, 500 -> 서버오류, 502-> 잘못된 응답, 504 -> 응답 시간 만료 -->
+  <error-code>404</error-code>
+  <location>/error.html</location>
+  </error-page>
+  <error-page>
+  <error-code>500</error-code>
+  <location>/error.html</location>
+  </error-page>
+  <error-page>
+  	<exception-type>java.lang.Exception</exception-type>
+  	<location>/error.html</location>
+  	</error-page>
+</web-app>
